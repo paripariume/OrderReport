@@ -1,0 +1,147 @@
+{
+  // 差し込み先のテンプレPDFファイル名
+  "template_pdf_name": "受注表レイアウト.pdf",
+
+  // 全体の描画位置を左右(X)・上下(Y)にずらすオフセット（単位:mm）
+  "offset_x_mm": 0,
+  "offset_y_mm": 0,
+
+  // 1ページに並べる明細行
+  "items_per_page": 5,
+
+  // 明細ブロックの「先頭行」の基準となるY座標（単位:mm）
+  // ここを基点に、block_pitch_mm ずつ下（or 上）にずらして各行を配置する想定
+  "block_top_y_mm": 247,
+
+  // 明細行の行間
+  "block_pitch_mm": 46.5,
+
+  // 商品名の最大幅
+  "item_name_max_width_mm": 70,
+
+  // ヘッダ部（ページ上部の固定情報）の配置座標
+  "header": {
+    // 受注日
+    "order_date": {
+      "pos": [65, 272],
+      "font_size": 8
+    },
+
+    // 担当者名
+    "tantou": {
+      "pos": [180, 272],
+      "font_size": 8
+    },
+
+    // 得意先コード
+    "customer_cd": {
+      "pos": [13, 264],
+      "font_size": 6
+    },
+
+    // 得意先名
+    "customer_name": {
+      "pos": [13, 261],
+      "font_size": 6
+    },
+
+    // 納入先コード
+    "shipto_cd": {
+      "pos": [13, 253.5],
+      "font_size": 6
+    },
+
+    // 納入先名
+    "shipto_name": {
+      "pos": [13, 250.5],
+      "font_size": 6
+    }
+  },
+
+  // 明細行の各フィールド配置
+  "item_fields": {
+    // 商品名
+    "item_name": {
+      "pos": [50, 6],
+      "font_size": 6
+    },
+
+    // 規格
+    "spec": {
+      "pos": [50, 14],
+      "font_size": 6
+    },
+
+    // 商品コード
+    "item_cd": {
+      "pos": [50, 30],
+      "font_size": 6
+    },
+
+    // 数量
+    "qty": {
+      "pos": [92, 6],
+      "font_size": 8
+    },
+
+    // 単位名
+    "unit_name": {
+      "pos": [93, 18],
+      "font_size": 6
+    },
+
+    // 入数名
+    "irisu_name": {
+      "pos": [94.5, 21],
+      "font_size": 5
+    },
+
+    // 売上単価
+    "sales_unit": {
+      "pos": [110, 7],
+      "font_size": 7
+    },
+
+    // 売上金額
+    "sales_amount": {
+      "pos": [124, 7],
+      "font_size": 7
+    },
+
+    // 仕入単価
+    "buy_unit": {
+      "pos": [110, 21],
+      "font_size": 7
+    },
+
+    // 仕入金額
+    "buy_amount": {
+      "pos": [124, 21],
+      "font_size": 7
+    },
+ 
+    // 仕入先コード
+    "supplier_cd": {
+      "pos": [97, 29.2],
+      "font_size": 6
+    },
+
+    // 仕入先名
+    "supplier_name": {
+      "pos": [97, 31.5],
+      "font_size": 6
+    },
+
+    // 納品場所名
+    "delivery_place_name": {
+      "pos": [18, 40],
+      "font_size": 6
+    },
+
+    // 行備考
+    "line_note": {
+      "pos": [60, 40],
+      "font_size": 6
+    }
+  }
+}

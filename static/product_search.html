@@ -1,0 +1,95 @@
+<!doctype html>
+<!-- 商品検索ポップアップ -->
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>商品検索</title>
+
+  <!-- /static 配下に統一 -->
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/product_search.css">
+
+  <style>
+    /* ローディング（テーブルに重ねる） */
+    .table-wrap { position: relative; }
+
+    .loading {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.75);
+      z-index: 10;
+    }
+    .loading.show { display: flex; }
+
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 3px solid var(--grid);
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .loading-text { color: var(--muted); font-size: 12px; }
+
+    /* 「該当なし」用 */
+    .muted { color: var(--muted); font-size: 12px; }
+  </style>
+</head>
+
+<body>
+  <h2>商品検索</h2>
+
+  <div class="panel">
+    <div class="row">
+      <!-- JS参照のIDに合わせる -->
+      <label>メーカコード <input id="maker_cd" /></label>
+      <label>メーカ名 <input id="maker_name" /></label>
+      <label>メーカ品番 <input id="maker_part_no" /></label>
+    </div>
+    <div class="row">
+      <label>商品名 <input id="product_name" /></label>
+      <label>規格 <input id="spec" /></label>
+      <button id="btnSearch" type="button">検索</button>
+      <button id="btnClose" type="button">閉じる</button>
+    </div>
+
+    <div class="hint">※行クリックで選択（ダブルクリックでも可）/ Escで閉じる</div>
+  </div>
+
+  <div class="panel" style="margin-top:10px;">
+    <!-- ローディング用のラップ -->
+    <div class="table-wrap">
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <div class="loading-text">検索中...</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:120px;">商品CD</th>
+            <th>商品名</th>
+            <th style="width:180px;">規格</th>
+            <th style="width:120px;">メーカCD</th>
+            <th style="width:200px;">メーカ名</th>
+            <th style="width:180px;">メーカ品番</th>
+          </tr>
+        </thead>
+        <tbody id="resultBody"></tbody>
+      </table>
+    </div>
+
+    <div class="err" id="error"></div>
+  </div>
+
+  <!-- 外部JSのみ -->
+  <script src="/static/js/product_search.js"></script>
+</body>
+</html>

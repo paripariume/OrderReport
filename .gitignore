@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual env
+.venv/
+
+# Environment variables
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+# Python
+__pycache__/
+*.pyc
+
+# Virtual env
+.venv/
+
+# Environment variables
+.env
+
+# Generated files
+*.pdf
+
+# OS
+.DS_Store
+Thumbs.db

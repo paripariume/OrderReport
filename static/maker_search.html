@@ -1,0 +1,99 @@
+<!doctype html>
+<!-- メーカ検索ポップアップ -->
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>メーカ検索</title>
+
+  <!-- 共通CSS -->
+  <link rel="stylesheet" href="/static/css/style.css">
+
+  <style>
+    .panel { border: 1px solid var(--grid); padding: 10px; background:#fff; }
+    .row { display:flex; gap:10px; align-items:center; margin-bottom:10px; }
+    .row input { width: 360px; height: 30px; border: 1px solid var(--grid); padding: 0 8px; }
+    .row button { height: 30px; }
+    .hint { color: var(--muted); font-size: 12px; }
+
+    table { width:100%; border-collapse: collapse; table-layout: fixed; }
+    th, td { border: 1px solid var(--grid); padding: 6px 8px; font-size: 12px; }
+    th { background: var(--head); }
+    td { cursor: pointer; }
+    tr:hover td { background: #fffbe6; }
+
+    col.c1 { width: 140px; }
+    col.c2 { width: auto; }
+
+    /* ローディング */
+    .table-wrap { position: relative; }
+
+    .loading {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.75);
+      z-index: 10;
+    }
+    .loading.show { display: flex; }
+
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 3px solid var(--grid);
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .loading-text { color: var(--muted); font-size: 12px; }
+  </style>
+</head>
+
+<body>
+  <div class="sheet">
+    <div class="panel">
+      <div class="row">
+        <div class="label">メーカ名</div>
+        <input id="q" placeholder="例）テルモ / ニプロ / オリンパス など" />
+        <button id="btn">検索</button>
+        <button id="back">戻る</button>
+      </div>
+
+      <div class="hint">
+        Enter / 検索で検索。行クリック or ダブルクリックで選択して戻ります
+      </div>
+
+      <div class="table-wrap" style="max-height:70vh; margin-top:10px;">
+        <!-- ローディング -->
+        <div class="loading" id="loading">
+          <div class="spinner"></div>
+          <div class="loading-text">検索中...</div>
+        </div>
+
+        <table>
+          <colgroup>
+            <col class="c1"><col class="c2">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>メーカCD</th>
+              <th>社内用メーカ名</th>
+            </tr>
+          </thead>
+          <tbody id="results"></tbody>
+        </table>
+      </div>
+
+      <div class="err" id="error"></div>
+    </div>
+  </div>
+
+  <!-- 外部JSのみ -->
+  <script src="/static/js/maker_search.js"></script>
+</body>
+</html>

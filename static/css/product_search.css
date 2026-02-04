@@ -1,0 +1,12 @@
+/* 商品検索ポップアップ */
+.panel { border: 1px solid #ddd; padding: 10px; background: #fff; }
+.row { display:flex; gap:10px; align-items:center; margin-bottom:10px; flex-wrap:wrap; }
+.row input { width: 220px; height: 30px; border: 1px solid #ccc; padding: 0 8px; }
+.row button { height: 30px; }
+.hint { color: #666; font-size: 12px; }
+
+table { width:100%; border-collapse: collapse; table-layout: fixed; }
+th, td { border: 1px solid #ddd; padding: 6px 8px; font-size: 12px; }
+th { background: #f5f5f5; }
+tbody tr { cursor: pointer; }
+tbody tr:hover { background: #fafafa; }
